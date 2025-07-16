@@ -1,0 +1,1 @@
+- [] in function late update is probably better to get the old rate from the last stock ledger entry, because if the last update valuation job faile the data won't be accurate
