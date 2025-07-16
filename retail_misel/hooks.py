@@ -4,6 +4,7 @@ app_publisher = "Lewis Mojica"
 app_description = "Frappe app for ERPnext. Adds retail functionality to streamline store operations"
 app_email = "lewismojica3@gmail.com"
 app_license = "gpl-3.0"
+doc_events = {"Stock Ledger Entry": {"on_update": ["retail_misel.retail_misel.moving_avrg.updateItemCost"]}}
 
 # Apps
 # ------------------
