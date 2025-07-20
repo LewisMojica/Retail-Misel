@@ -12,7 +12,7 @@ frappe.provide("erpnext.pos");
 
     const btn = document.createElement('button');
     btn.id = 'my-custom-btn';
-    btn.innerText = __('My Button');
+    btn.innerText = __('Financiar');
     btn.className = 'btn btn-primary btn-sm';
     // ensure it sits on top and is clickable
     btn.style.position      = 'relative';
