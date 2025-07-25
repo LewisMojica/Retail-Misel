@@ -5,6 +5,9 @@ app_description = "Frappe app for ERPnext. Adds retail functionality to streamli
 app_email = "lewismojica3@gmail.com"
 app_license = "gpl-3.0"
 doc_events = {"Stock Ledger Entry": {"on_update": ["retail_misel.retail_misel.moving_avrg.updateItemCost"]}}
+fixtures = [ 
+	{'doctype': 'POS Profile', 'filters': { 'name': 'Punto de venta' }}
+]
 
 # Apps
 # ------------------
