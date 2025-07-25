@@ -96,9 +96,11 @@ def updateItemCost(doc, method):
 	stock enter with different cost and the valueation method
 	is moving average.
 	"""
-	stock_entry_type = frappe.get_doc('Stock Entry', doc.voucher_no).stock_entry_type
-	item_valuation_method = frappe.get_value('Item', doc.item_code, 'valuation_method')
+	#this if make sure the stock change is possitive (is not stock leaving inventory)
+	if doc.actual_qty > 0:
+		stock_entry_type = frappe.get_doc('Stock Entry', doc.voucher_no).stock_entry_type
+		item_valuation_method = frappe.get_value('Item', doc.item_code, 'valuation_method')
 
-	if stock_entry_type == 'Material Receipt' and item_valuation_method == 'Moving Average':
-		frappe.enqueue(lateUpdate,queue='short', stock_ledger_entry=doc.name, update_selling_rate=True)
+		if stock_entry_type == 'Material Receipt' and item_valuation_method == 'Moving Average':
+			frappe.enqueue(lateUpdate,queue='short', stock_ledger_entry=doc.name, update_selling_rate=True)
 
