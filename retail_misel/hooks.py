@@ -4,7 +4,10 @@ app_publisher = "Lewis Mojica"
 app_description = "Frappe app for ERPnext. Adds retail functionality to streamline store operations"
 app_email = "lewismojica3@gmail.com"
 app_license = "gpl-3.0"
-doc_events = {"Stock Ledger Entry": {"on_update": ["retail_misel.retail_misel.moving_avrg.updateItemCost"]}}
+doc_events = {
+"Stock Ledger Entry": {"on_update": ["retail_misel.retail_misel.moving_avrg.updateItemCost"]},
+"Sales Invoice": {"on_submit": ["retail_misel.retail_misel.handle_pos_stock.main"]},
+}
 fixtures = [ 
 	{'doctype': 'POS Profile', 'filters': { 'name': 'Punto de venta' }}
 ]
