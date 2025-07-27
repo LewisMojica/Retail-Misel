@@ -14,19 +14,21 @@ def lateUpdate(si_name):
 		if pos_invoices:
 			break
 	for inv in pos_invoices:
-		next_item = frappe.get_all('POS Invoice Item', filters={'parent': inv['name']},fields=['item_code', 'qty', 'name'])
+		next_item = frappe.get_all('POS Invoice Item', filters={'parent': inv['name']},
+			fields=['item_code', 'qty', 'name', 'custom_collected_at_pos'])
 		items.append(next_item)	
 	items = list(chain.from_iterable(items))	
 	
 	doc_dn.customer = doc_si.customer
 	for item in items:
-		doc_sii = frappe.get_all('Sales Invoice Item', filters={'pos_invoice_item': item.name})[0]
-		doc_dn.append('items',{
-			'item_code':item.item_code,
-			'qty': item.qty,
-			'against_sales_invoice': doc_si.name,
-			'si_detail': doc_sii['name'], 
-		})
+		if item.custom_collected_at_pos == 0:
+			doc_sii = frappe.get_all('Sales Invoice Item', filters={'pos_invoice_item': item.name})[0]
+			doc_dn.append('items',{
+				'item_code':item.item_code,
+				'qty': item.qty,
+				'against_sales_invoice': doc_si.name,
+				'si_detail': doc_sii['name'], 
+			})
 	doc_dn.insert()
 	doc_dn.submit()
 
