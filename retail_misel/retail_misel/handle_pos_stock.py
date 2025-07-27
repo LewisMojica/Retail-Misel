@@ -33,8 +33,9 @@ def lateUpdate(si_name):
 	doc_dn.submit()
 
 def main (doc, method):
-	if doc.is_pos:
+	if doc.is_pos and doc.update_stock == 0:
 		jid = 'handle_pos_stock::{}'.format(doc.name)
 		frappe.enqueue(lateUpdate,queue='long',si_name=doc.name,job_id=jid,enqueue_after_commit=True, deduplicate=False)
-
+	elif doc.update_stock == 1:
+		print('!!!!!!NOT CREATING DELIVERY NOTES!!!!!! update stock is set to 1')
 	
