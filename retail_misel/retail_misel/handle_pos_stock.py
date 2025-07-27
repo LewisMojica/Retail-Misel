@@ -21,7 +21,7 @@ def lateUpdate(si_name):
 	
 	doc_dn.customer = doc_si.customer
 	for item in items:
-		if item.custom_collected_at_pos == 0:
+		if item.custom_collected_at_pos == 1:
 			doc_sii = frappe.get_all('Sales Invoice Item', filters={'pos_invoice_item': item.name})[0]
 			doc_dn.append('items',{
 				'item_code':item.item_code,
