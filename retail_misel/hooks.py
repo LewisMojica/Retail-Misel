@@ -9,7 +9,8 @@ doc_events = {
 "Sales Invoice": {"on_submit": ["retail_misel.retail_misel.handle_pos_stock.main"]},
 }
 fixtures = [ 
-	{'doctype': 'POS Profile', 'filters': { 'name': 'Punto de venta' }}
+	{'doctype': 'POS Profile', 'filters': { 'name': 'Punto de venta' }},
+	{'doctype': 'Property Setter', 'filters': {'module': 'Retail Misel'}},
 ]
 
 # Apps
