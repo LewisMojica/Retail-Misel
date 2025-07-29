@@ -180,5 +180,18 @@
   "name": "of300j4f7l",
   "source_text": "Pending amount",
   "translated_text": "Monto pendiente"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "es-DO",
+  "modified": "2025-07-28 22:31:13.852044",
+  "name": "u3imqgddvt",
+  "source_text": "Repayment term (months)",
+  "translated_text": "Plazo de pago (meses)"
  }
 ]
