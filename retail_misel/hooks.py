@@ -13,6 +13,7 @@ fixtures = [
 	{'doctype': 'Property Setter', 'filters': {'module': 'Retail Misel'}},
 	{'doctype': 'Print Format', 'filters': {'module': 'Retail Misel'}},
 	{ 'doctype': 'Custom Field', 'filters': {'module': 'Retail Misel'} },
+	{'doctype': 'Translation'},
 ]
 
 # Apps
