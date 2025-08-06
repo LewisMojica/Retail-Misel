@@ -12,7 +12,7 @@ def main(doc, method):
 	if doc.stock_entry_type == 'Repack':
 		pass		
 
-def lateUpdate(stock_ledger_entry, update_selling_rate):
+def lateUpdate(stock_ledger_entry):
 	"""
 	Updates Item valuation_rate field after ERPNext completes valuation calculation.
 
@@ -43,31 +43,11 @@ def lateUpdate(stock_ledger_entry, update_selling_rate):
 		 and valuation_rate when updating costs.
 	"""
 	import time
-	def getItemPrice(item_code):
-		return frappe.get_all("Item Price", filters={"item_code": item_code,	"price_list": "Standard Selling"}, fields=['name',"price_list_rate"])[0]
-		
-	def getNewSellingRate(item_code, new_valuation):
-		"""
-		Calculate new selling rate maintaining the original ratio to valuation rate.
-
-		Args:
-			 item_code (str): Item code to update
-			 new_valuation (float): New valuation rate
-			 
-		Returns:
-			 float: New selling rate proportional to valuation change
-		"""
-		ratio = getItemPrice(item_code)['price_list_rate'] / frappe.get_value('Item', item_code, 'valuation_rate')
-		return ratio * new_valuation
-		
 	while True:	
 		time.sleep(3)
 		valuation_rate = frappe.get_value('Stock Ledger Entry', stock_ledger_entry, 'valuation_rate')
 		if valuation_rate != None:
 			item_code = frappe.get_value('Stock Ledger Entry', stock_ledger_entry, 'item_code')
-			if update_selling_rate: 
-				item_price = getItemPrice(item_code)
-				frappe.set_value('Item Price', item_price['name'], 'price_list_rate', getNewSellingRate(item_code, valuation_rate))
 			frappe.set_value('Item',item_code,'valuation_rate', valuation_rate) 
 			break
 
@@ -102,5 +82,5 @@ def updateItemCost(doc, method):
 		item_valuation_method = frappe.get_value('Item', doc.item_code, 'valuation_method')
 
 		if stock_entry_type == 'Material Receipt' and item_valuation_method == 'Moving Average':
-			frappe.enqueue(lateUpdate,queue='short', stock_ledger_entry=doc.name, update_selling_rate=True)
+			frappe.enqueue(lateUpdate,queue='short', stock_ledger_entry=doc.name)
 
