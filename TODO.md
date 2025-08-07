@@ -1,1 +1,4 @@
-- [] in function late update is probably better to get the old rate from the last stock ledger entry, because if the last update valuation job faile the data won't be accurate
+- [x] in function late update is probably better to get the old rate from the last stock ledger entry, because if the last update valuation job faile the data won't be accurate.
+- [] set the valuation method to moving average by default when creating an item.
+- [x] missing addres,rnc phone, and ws phone in pos invoice print format
+- [] add substarct itbis from total, change itbis from 0 to the right value, the total should stay the same. Do this in the print format
