@@ -7,6 +7,7 @@ app_license = "gpl-3.0"
 doc_events = {
 "Stock Ledger Entry": {"on_update": ["retail_misel.retail_misel.moving_avrg.updateItemCost"]},
 "Sales Invoice": {"on_submit": ["retail_misel.retail_misel.handle_pos_stock.main"]},
+'Item': {'before_insert': ['retail_misel.retail_misel.set_valuation_method.main']},
 }
 fixtures = [ 
 	#{'doctype': 'POS Profile', 'filters': { 'name': 'Punto de venta' }},
