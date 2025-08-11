@@ -15,7 +15,7 @@ def lateUpdate(si_name):
 			break
 	for inv in pos_invoices:
 		next_item = frappe.get_all('POS Invoice Item', filters={'parent': inv['name']},
-			fields=['item_code', 'qty', 'name', 'custom_collected_at_pos'])
+			fields=['item_code', 'qty', 'name', 'custom_collected_at_pos', 'uom'])
 		items.append(next_item)	
 	items = list(chain.from_iterable(items))	
 	
@@ -28,6 +28,7 @@ def lateUpdate(si_name):
 				'qty': item.qty,
 				'against_sales_invoice': doc_si.name,
 				'si_detail': doc_sii['name'], 
+				'uom': item.uom,
 			})
 	doc_dn.insert()
 	doc_dn.submit()
