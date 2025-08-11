@@ -1,3 +1,6 @@
+from frappe import _
+from . import __version__ as app_version
+
 app_name = "retail_misel"
 app_title = "Retail Misel"
 app_publisher = "Lewis Mojica"
