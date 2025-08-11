@@ -3,3 +3,4 @@
 - [x] missing addres,rnc phone, and ws phone in pos invoice print format
 - [x] add substarct itbis from total, change itbis from 0 to the right value, the total should stay the same. Do this in the print format
 - [] add configuration to this app
+- [] in pos print format make left upper section a table, just la the right side
