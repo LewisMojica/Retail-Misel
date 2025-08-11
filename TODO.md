@@ -2,3 +2,4 @@
 - [x] set the valuation method to moving average by default when creating an item.
 - [x] missing addres,rnc phone, and ws phone in pos invoice print format
 - [x] add substarct itbis from total, change itbis from 0 to the right value, the total should stay the same. Do this in the print format
+- [] add configuration to this app
