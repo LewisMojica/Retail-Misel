@@ -193,5 +193,18 @@
   "name": "u3imqgddvt",
   "source_text": "Repayment term (months)",
   "translated_text": "Plazo de pago (meses)"
+ },
+ {
+  "context": null,
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "es-DO",
+  "modified": "2025-08-11 20:06:41.614419",
+  "name": "dtguhjqenj",
+  "source_text": "Interest rate period",
+  "translated_text": "Periodicidad de la tasa de interés"
  }
 ]
