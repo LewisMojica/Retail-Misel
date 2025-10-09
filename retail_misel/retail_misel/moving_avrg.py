@@ -78,6 +78,10 @@ def updateItemCost(doc, method):
 	"""
 	#this if make sure the stock change is possitive (is not stock leaving inventory)
 	if doc.actual_qty > 0:
+		# Only process Stock Entry vouchers (not Sales Invoice, Purchase Invoice, etc.)
+		if doc.voucher_type != 'Stock Entry':
+			return
+
 		stock_entry_type = frappe.get_doc('Stock Entry', doc.voucher_no).stock_entry_type
 		item_valuation_method = frappe.get_value('Item', doc.item_code, 'valuation_method')
 
