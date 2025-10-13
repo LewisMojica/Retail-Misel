@@ -297,5 +297,18 @@
   "name": "bn1r1r9irs",
   "source_text": "Create down payment",
   "translated_text": "Pagar inicial"
+ },
+ {
+  "context": "",
+  "contributed": 0,
+  "contribution_docname": null,
+  "contribution_status": "",
+  "docstatus": 0,
+  "doctype": "Translation",
+  "language": "es-DO",
+  "modified": "2025-10-13 12:35:26.172814",
+  "name": "9odnrdoq7k",
+  "source_text": "Finance Application Form",
+  "translated_text": "Fomulario de Solicitud de Credito"
  }
 ]
